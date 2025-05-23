@@ -6,14 +6,14 @@ COPY ./requirements.txt /code/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-COPY ./app /code/app
+# COPY ./app /code/app
+COPY ./main.py /code/
 
-CMD ["fastapi", "run", "app/main.py", "--proxy-headers", "--port", "80"]
+# CMD ["fastapi", "run", "main.py", "--proxy-headers", "--port", "80", "--workers", "4"]
+CMD ["fastapi", "run", "main.py", "--port", "80"]
 
 
 # .
-# ├── app
-# │   ├── __init__.py
-# │   └── main.py
+# ├── main.py
 # ├── Dockerfile
 # └── requirements.txt
